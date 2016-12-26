@@ -1,0 +1,1 @@
+/Users/LimeStreem/GrimoireGL/grimoire/register/grimoire.js

@@ -1,0 +1,51 @@
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+.container {
+    width: 100%;
+}
+
+div.container {
+    height: 100%;
+}
+
+.container {
+    display: flex;
+}
+
+.container div {
+    display: flex-item;
+}
+
+.link-list {
+    background-color: azure;
+}
+.link-list div{
+    padding: 20px;
+}
+
+.link-list a {
+    display: block;
+    margin-top: 10px;
+}
+
+.link-list a:hover {
+  color: blue;
+  cursor: pointer;
+}
+
+.link-list div {
+  margin-top: auto;
+  margin-bottom: 0;
+}
+
+.types{
+  background-color: lightgreen;
+}
+
+.preview {
+    width: 100%;
+}
