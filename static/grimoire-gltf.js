@@ -1,1 +1,1 @@
-../../grimoirejs-gltf/register/grimoire-gltf.js
+../../../grimoire/gltf/register/grimoire-gltf.js

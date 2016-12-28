@@ -1,1 +1,1 @@
-/Users/LimeStreem/GrimoireGL/grimoire/register/grimoire.js
+../../../grimoire/core/register/grimoire.js

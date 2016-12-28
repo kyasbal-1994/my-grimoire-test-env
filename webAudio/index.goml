@@ -1,0 +1,19 @@
+<goml width="fit" height="fit">
+    <import-material typeName="audio" src="./test.sort" />
+    <material type="audio" color="red"/>
+    <goml.components>
+        <WebAudioShaderResource/>
+    </goml.components>
+    <scene>
+        <camera>
+            <camera.components>
+                <MouseCameraControl/>
+            </camera.components>
+        </camera>
+        <mesh geometry="sphere" material="material"/>
+        <mesh position="2,0,0" geometry="sphere" material="material"/>
+        <mesh position="-2,0,0" geometry="sphere" material="material"/>
+        <mesh position="0,0,2" geometry="sphere" material="material"/>
+        <mesh position="0,0,-2" geometry="sphere" material="material"/>
+    </scene>
+</goml>

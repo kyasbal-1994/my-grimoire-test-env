@@ -1,1 +1,1 @@
-/Users/LimeStreem/GrimoireGL/grimoirejs-math/register/grimoire-math.js
+../../../grimoire/math/register/grimoire-math.js
