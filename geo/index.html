@@ -6,25 +6,21 @@
     <script src="../static/grimoire.js"></script>
     <script src="../static/grimoire-math.js"></script>
     <script src="../static/grimoire-fundamental.js"></script>
-    <script src="../static/grimoire-forward-shading.js"></script>
-
     <link href="../static/default.css" rel="stylesheet">
+    <script src="./index.js" charset="utf-8"></script>
     <!-- stats.js r16 -->
   </head>
   <body>
     <script type="text/goml" id="canvas">
     <goml width="fit" height="fit">
+    <import-material typeName="colorTest" src="./index.sort"/>
         <scene>
             <camera>
               <camera.components>
                 <MouseCameraControl/>
               </camera.components>
             </camera>
-            <mesh rotation="y(60d)" geometry="cube" albedo="white" roughness="1" refractive="0.2"/>
-            <light type="directional" rotation="x(40d)" color="white"/>
-            <light type="point" position="0,1.1,0" intensity="3"/>
-            <light type="point" position="0.3,1.1,0" intensity="3" color="red"/>
-            <light type="spot" position="-0.3,3,0" rotation="x(5d)" intensity="3" color="blue"/>
+            <mesh material="new(colorTest)" geometry="quad" color="red" />
         </scene>
     </goml>
     </script>

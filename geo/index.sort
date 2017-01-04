@@ -1,0 +1,28 @@
+@Pass{
+  FS_PREC(mediump,float)
+
+  varying vec3 vColor;
+  #ifdef VS
+    attribute vec3 position;
+    @COLOR1
+    attribute vec3 color1;
+
+    @COLOR2
+    attribute vec3 color2;
+
+    uniform float _time;
+
+    uniform mat4 _matPVM;
+
+    void main(){
+      vColor = mix(color1,color2,0.5 + sin(_time /1000.) * 0.5);
+      gl_Position = _matPVM * vec4(position,1);
+    }
+  #endif
+
+  #ifdef FS
+    void main(){
+      gl_FragColor = vec4(vColor,1);
+    }
+  #endif
+}
