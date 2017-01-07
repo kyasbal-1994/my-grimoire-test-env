@@ -14,14 +14,17 @@
   <body>
     <script type="text/goml" id="canvas">
     <goml width="fit" height="fit">
-        <scene>
-            <camera>
+        <scene shadowQuality="10">
+            <camera position="0,0,20" far="500" >
               <camera.components>
                 <MouseCameraControl/>
               </camera.components>
             </camera>
-            <mesh geometry="cube" albedo="red" roughness="1" roughnessMap="./roughness.jpg" refractive="0.2"/>
-            <light type="directional" rotation="x(-60d)" color="red" intensity="1"/>
+            <mesh scale="3,3,1" geometry="cube" albedo="red" roughness="1" rotation="z(70d)" position="3,6,0" roughnessMap="../uvg.jpg" texture="../uvg.jpg" refractive="0.2"/>
+            <mesh scale="2,1,1" geometry="cube" albedo="red" roughness="1" rotation="z(30d)" position="-3,-1,0" roughnessMap="../uvg.jpg" texture="../uvg.jpg" refractive="0.2"/>
+            <mesh scale="1" geometry="cube" albedo="red" roughness="1" rotation="y(0d)" roughnessMap="../uvg.jpg" texture="../uvg.jpg" refractive="0.2"/>
+            <mesh scale="100,100,0.5" geometry="cube" albedo="red" roughness="1" rotation="y(0d)" roughnessMap="../uvg.jpg" position="0,0,-5" texture="../uvg.jpg" refractive="0.2"/>
+            <light type="directional" color="white" intensity="1" shadow="true" position="0,0,30"/>
             <light type="point" position="0,1.1,0" intensity="3"/>
             <light type="point" position="0.3,1.1,0" intensity="3" color="red"/>
             <light class="spot" type="spot" position="-0.3,3,0" rotation="x(5d)" intensity="3" color="blue"/>
