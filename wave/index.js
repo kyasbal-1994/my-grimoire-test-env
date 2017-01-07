@@ -1,5 +1,5 @@
-const scale = 1;
-const count = 12;
+const scale = 2.0;
+const count = 8;
 
 gr(function() {
   for (let x = -count; x <= count; x++) {
