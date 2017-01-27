@@ -1,0 +1,40 @@
+@Pass{
+  @BlendFunc(ONE,ONE)
+  FS_PREC(mediump,float)
+
+  varying vec3 vColor;
+  #ifdef VS
+
+    @POS
+    attribute float pos;
+
+    @POWERS
+    attribute vec3 power;
+
+    @SIZES
+    attribute float size;
+
+    uniform float _time;
+
+    @{default:"orange",type:"color"}
+    uniform vec3 baseColor;
+
+    @AUDIO_FFT
+    uniform sampler2D audio;
+
+    void main(){
+      vec3 tPos = vec3(pos,0,0);
+      //tPos.y = fract(tPos.y * _time/7000.) * 2.0 - 1.0;
+      gl_Position = vec4(tPos,1);
+      gl_PointSize = 15.0 ;
+      float t = _time /400.;
+      vColor = baseColor * mix(power.x,mix(power.y,power.z,abs(sin(t))),abs(sin(t + 100.))) * texture2D(audio,pow(tPos.yx/2.0 + vec2(0.5),vec2(3.0))).x;
+    }
+  #endif
+
+  #ifdef FS
+    void main(){
+      gl_FragColor = vec4(vColor,0.5);
+    }
+  #endif
+}

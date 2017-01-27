@@ -25,7 +25,7 @@ vec3 specularLight = vec3(0., 0., 0.);
 {
 float specularIntensity = 0.;
 float attenuation = 1.0;
-vec3 l = normalize(v_light0Direction);
+vec3 l = normalize(vec3(1,1,1));
 vec3 viewDir = -normalize(v_position);
 vec3 h = normalize(l+viewDir);
 specularIntensity = max(0., pow(max(dot(normal,h), 0.) , u_shininess)) * attenuation;
@@ -38,5 +38,5 @@ diffuse.xyz *= diffuseLight;
 color.xyz += diffuse.xyz;
 color.xyz += emission.xyz;
 color = vec4(color.rgb * diffuse.a, diffuse.a);
-gl_FragColor = color;
+gl_FragColor = diffuse;
 }

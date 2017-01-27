@@ -1,0 +1,30 @@
+@Pass{
+    FS_PREC(mediump,float)
+
+    varying vec2 vuv;
+
+    #ifdef VS
+
+    attribute vec3 position;
+
+        void main(){
+            vec3 p = position;
+            p.xy = p.xy/2.0 + vec2(0.5);
+            p.xy *= 0.2;
+            p.xy = p.xy * 2.0 - vec2(1.0);
+            gl_Position = vec4(p,1);
+            vuv = position.xy / 2.0 + vec2(0.5);
+        }
+    #endif
+
+    #ifdef FS
+    
+    @SHADOW_MAP_TEXTURE
+    uniform sampler2D depth;
+
+    void main(){
+        gl_FragColor = vec4(texture2D(depth,vuv).rgb,1.0);
+    }
+
+    #endif
+}

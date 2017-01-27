@@ -38,6 +38,12 @@ function modelChange(name, type) {
     location.reload();
 }
 
+$(function(){
+  $("input").on("input",function(){
+    gr("#main")("gltf-animation").setAttribute("frame",this.value/100);
+  });
+});
+
 gr(function() {
     const ext = modelType === "glTF-Binary" ? "glb" : "gltf";
     gr("#main")("scene").append('<model src="../tf/' + modelName + '/' + modelType + '/' + modelName + '.' + ext + '"/>')

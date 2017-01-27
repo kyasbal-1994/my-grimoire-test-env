@@ -1,17 +1,18 @@
 <goml width="fit" height="fit">
-	<material id="wired" type="phong" color="black"/>
-	<material id="surface" type="phong" color="white" texture="../uvg.jpg" roughness="5"/>
+	<material id="wired" type="basic" color="black"/>
+	<material id="surface" type="basic" color="white" texture="../uvg.jpg" roughnessMap="../uvg.jpg" roughness="0.01"/>
 		<material id="unlit" type="unlit" color="red"/>
 	<renderer camera=".camera" viewport="0,0,100%,100%">
 		<render-scene/>
 	</renderer>
-	<scene>
-		<camera class="camera" aspect="1.0" fovy="45d" position="0,12,17" far="20" rotation="-35,0,0">
+	<scene shadowQuality="9">
+		<camera class="camera" aspect="1.0" fovy="45d" position="0,12,17" far="50" rotation="-35,0,0">
 			<camera.components>
-        <StareAt center="0,0,0" speed="0.02" zoom="5" zoomPhase="1.4"/>
+        <!--<StareAt center="0,0,0" speed="0.02" zoom="5" zoomPhase="1.4"/>-->
+			<MouseCameraControl/>
 		  </camera.components>
 		</camera>
-		<light type="point" color="yellow" intensity="50"/>
+		<!--<light type="point" color="yellow" intensity="50"/>
 		<light type="point" color="cyan" position="7,0,0" intensity="50"/>
 		<light type="point" color="purple" position="-7,0,0" intensity="50"/>
 		<light type="point" color="orange" intensity="50" position="0,0,7"/>
@@ -19,7 +20,8 @@
 		<light type="point" color="green" position="-7,0,7" intensity="50"/>
 		<light type="point" color="red" intensity="50" position="7,0,7"/>
 		<light type="point" color="brown" position="7,0,-7" intensity="50"/>
-		<light type="point" color="blue" position="-7,0,-7" intensity="50"/>
+		<light type="point" color="blue" position="-7,0,-7" intensity="50"/>-->
+		<light type="directional" color="white" rotation="-30d,30d,0d" shadow="true" position="0,0,30"/>
 	</scene>
 	<renderer>
 		<render-scene/>

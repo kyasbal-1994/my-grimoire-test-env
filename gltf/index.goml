@@ -5,6 +5,5 @@
             <MouseCameraControl/>
           </camera.components>
         </camera>
-        <!-- <model src="WalkingLady.gltf" scale="1"/> -->
     </scene>
 </goml>

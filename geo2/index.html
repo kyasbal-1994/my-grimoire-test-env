@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="../static/grimoire.js"></script>
+    <script src="../static/grimoire-math.js"></script>
+    <script src="../static/grimoire-fundamental.js"></script>
+    <link href="../static/default.css" rel="stylesheet">
+    <script src="./index.js" charset="utf-8"></script>
+    <script src="./audio.js" charset="utf-8"></script>
+    <!-- stats.js r16 -->
+  </head>
+  <body>
+    <script type="text/goml" id="canvas">
+    <goml width="fit" height="fit" bgColor="dimgray">
+      <goml.components>
+        <WebAudioShaderResource/>
+      </goml.components>
+    <geometry type="custom" name="c1" count="10000"/>
+    <import-material typeName="particleTest" src="./index.sort"/>
+        <scene>
+            <camera>
+              <camera.components>
+                <MouseCameraControl/>
+              </camera.components>
+            </camera>
+            <mesh material="new(particleTest)" geometry="c1" baseColor="orange"/>
+        </scene>
+    </goml>
+    </script>
+  </body>
+</html>
