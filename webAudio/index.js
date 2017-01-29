@@ -37,3 +37,5 @@ var UniformResolverRegistry = gr.lib.fundamental.Material.UniformResolverRegistr
 UniformResolverRegistry.add("AUDIO_FFT", (valInfo) => (proxy, args) => {
   proxy.uniformTexture2D(valInfo.name,audioTexture);
 });
+
+gr.overrideDeclaration("goml",["WebAudioShaderResource"]);

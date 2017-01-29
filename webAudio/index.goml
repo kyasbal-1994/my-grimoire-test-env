@@ -1,9 +1,6 @@
 <goml width="fit" height="fit">
     <import-material typeName="audio" src="./test.sort" />
     <material type="audio" color="red"/>
-    <goml.components>
-        <WebAudioShaderResource/>
-    </goml.components>
     <scene>
         <camera>
             <camera.components>

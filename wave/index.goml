@@ -1,6 +1,6 @@
 <goml width="fit" height="fit">
-	<material id="wired" type="basic" color="black"/>
-	<material id="surface" type="basic" color="white" texture="../uvg.jpg" roughnessMap="../uvg.jpg" roughness="0.01"/>
+	<material id="wired" type="unlit" color="black"/>
+	<material id="surface" type="unlit" color="white" texture="../uvg.jpg" roughnessMap="../uvg.jpg" roughness="0.01"/>
 		<material id="unlit" type="unlit" color="red"/>
 	<renderer camera=".camera" viewport="0,0,100%,100%">
 		<render-scene/>
@@ -21,7 +21,7 @@
 		<light type="point" color="red" intensity="50" position="7,0,7"/>
 		<light type="point" color="brown" position="7,0,-7" intensity="50"/>
 		<light type="point" color="blue" position="-7,0,-7" intensity="50"/>-->
-		<light type="directional" color="white" rotation="-30d,30d,0d" shadow="true" position="0,0,30"/>
+		<!-- <light type="directional" color="white" rotation="-30d,30d,0d" shadow="true" position="0,0,30"/> -->
 	</scene>
 	<renderer>
 		<render-scene/>
