@@ -10,9 +10,12 @@ LIB_NAME="grimoire-${LIB_FOLDER}"
 if [ ${LIB_FOLDER} = "grimoire" ]; then
    LIB_FOLDER="core"
    LIB_NAME="grimoire"
+   ln -s ../../../grimoire/${LIB_FOLDER}/register/${LIB_NAME}.js.map ./static/${LIB_NAME}.js.map
+   ln -s ../../../grimoire/${LIB_FOLDER}/register/${LIB_NAME}.js ./static/${LIB_NAME}.js
+   ln -s ../../../grimoire/${LIB_FOLDER}/register/${LIB_NAME}.min.js ./static/${LIB_NAME}.min.js
+   ln -s ../../../grimoire/${LIB_FOLDER}/register/${LIB_NAME}.min.js.map ./static/${LIB_NAME}.min.js.map
+   exit 0
 fi
 
-ln -s ../../../grimoire/${LIB_FOLDER}/register/${LIB_NAME}.js.map ./static/${LIB_NAME}.js.map
-ln -s ../../../grimoire/${LIB_FOLDER}/register/${LIB_NAME}.js ./static/${LIB_NAME}.js
-ln -s ../../../grimoire/${LIB_FOLDER}/register/${LIB_NAME}.min.js ./static/${LIB_NAME}.min.js
-ln -s ../../../grimoire/${LIB_FOLDER}/register/${LIB_NAME}.min.js.map ./static/${LIB_NAME}.min.js.map
+ln -s ../../../grimoire/${LIB_FOLDER}/register/index.js.map ./static/${LIB_NAME}.js.map
+ln -s ../../../grimoire/${LIB_FOLDER}/register/index.js ./static/${LIB_NAME}.js

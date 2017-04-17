@@ -1,9 +1,13 @@
-<goml width="fit" height="fit" bgColor="gray">
+<goml width="fit" height="fit" bgColor="black">
     <scene>
         <camera position="0,0,50" far="1000">
           <camera.components>
             <MouseCameraControl/>
           </camera.components>
         </camera>
+        <!-- <model src="../tf/Lantern/glTF/Lantern.gltf" rotation="y(180d)" position="-1,0,0"/>
+        <model src="../tf/BoomBox/glTF/BoomBox.gltf" position="-0.5,-0.5,0" scale="0.4"/>
+        <light type="directional" rotation="20d,160d,0d" intensity="4"/>
+        <mesh rotation="90d,180d,0" scale="3" position="-0.5,-0.75,0" texture="./logo.png"/> -->
     </scene>
 </goml>
