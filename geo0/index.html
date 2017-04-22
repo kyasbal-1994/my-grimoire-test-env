@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="../static/grimoire.js"></script>
+    <script src="../static/grimoire-math.js"></script>
+    <script src="../static/grimoire-fundamental.js"></script>
+    <script src="./index.js" charset="utf-8"></script>
+    <link href="../static/default.css" rel="stylesheet">
+    <!-- stats.js r16 -->
+  </head>
+  <body>
+    <script type="text/goml" id="canvas">
+    <goml width="fit" height="fit">
+    <import-material typeName="colorTest" src="./index.sort"/>
+    <geometry type="quad2" name="quad2"/>
+        <scene>
+            <camera far="2000">
+              <camera.components>
+                <MouseCameraControl/>
+              </camera.components>
+            </camera>
+            <mesh material="new(colorTest)" geometry="quad2" color="red" scale="0.1"/>
+        </scene>
+    </goml>
+    </script>
+  </body>
+</html>
