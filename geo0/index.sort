@@ -36,14 +36,17 @@
   #endif
 
   #ifdef FS
-  @{default:"images.jpeg"}
+  @{default:"images.jpeg",flag:"TEXTURE_USED"}
   uniform sampler2D texture;
     void main(){
-      vec3 texColor = texture2D(texture,uv).rgb;
-      if(length(texColor)/1.73<0.3){
+      vec4 baseColor = vec4(1.0);
+      #ifdef TEXTURE_USED
+      baseColor *= texture2D(texture,uv);
+      #endif
+      if(length(baseColor)/1.73<0.3){
         discard;
       }else{
-        gl_FragColor = vec4(vColor* texColor,1.);
+        gl_FragColor = vec4(vColor* baseColor.rgb,1.);
       }
     }
   #endif

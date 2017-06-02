@@ -1,0 +1,25 @@
+<goml width="fit" height="fit">
+  <import-material typeName="transition-default" src="./transitions/default.sort"/>
+  <material type="transition-default" class="transition" id="default"/>
+  <renderer>
+    <render-slide>
+      <render-slide.components>
+        <SlideController/>
+      </render-slide.components>
+    </render-slide>
+  </renderer>
+  <scene-slide>
+    <camera/>
+    <mesh color="blue"/>
+  </scene-slide>
+  <scene-slide build="3">
+    <camera/>
+    <mesh color="red"/>
+  </scene-slide>
+  <scene-slide transitionTime="10">
+    <camera/>
+    <mesh color="green"/>
+    <mesh color="yellow" position="2,0,0"/>
+    <mesh color="red" position="-2,0,0"/>
+  </scene-slide>
+</goml>

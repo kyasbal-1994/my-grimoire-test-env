@@ -1,0 +1,143 @@
+@Pass{
+  FS_PREC(mediump,float)
+
+  varying vec3 vNormal;
+  varying vec2 vTexCoord;
+  varying vec3 vLightDirection;
+  varying vec3 vCameraDirection;
+  varying float vYParamCoeff;
+  #ifdef VS
+    attribute vec3 position;
+    attribute vec3 normal;
+    attribute vec2 texCoord;
+
+    uniform mat4 _matPVM;
+    uniform mat4 _matVM;
+    uniform mat4 _matV;
+    @{default:"n(1,1,-1)"}
+    uniform vec3 lightDirection;
+
+    @CAMERA_POSITION
+    uniform vec3 _cameraPosition;
+    void main(){
+      vec3 cP = (_matV * vec4(position,0.)).xyz;
+      gl_Position = _matPVM * vec4(position,1);
+      vNormal = (_matVM * vec4(normal,0.)).xyz;
+      vTexCoord = texCoord;
+      vLightDirection = (_matVM * vec4(lightDirection,0.)).xyz;
+      vCameraDirection = normalize((_matV * vec4(_cameraPosition,1.0)).xyz-(_matVM * vec4(position,1.)).xyz);
+      vYParamCoeff = cP.y;
+    }
+  #endif
+
+  #ifdef FS
+
+    @{default:"red",type:"color"}
+    uniform vec4 baseColor;
+
+    @{flag:"BASE_TEXTURE_USED"}
+    uniform sampler2D baseTexture;
+
+    @{default:"gray",type:"color"}
+    uniform vec4 shadow1Color;
+
+    @{default:"#111",type:"color"}
+    uniform vec4 shadow2Color;
+
+    @{default:"#EEE",type:"color"}
+    uniform vec4 highlightColor;
+
+    @{default:100}
+    uniform float highlightCoeff;
+
+    @{default:"./toon2.png"}
+    uniform sampler2D toon;
+
+    @{default:0.9}
+    uniform float step1;
+
+    @{default:0.25}
+    uniform float step2;
+
+    @{default:0.1}
+    uniform float highlightStep;
+
+    @{default:0.7}
+    uniform float fresnel;
+
+    @{default:"white",type:"color"}
+    uniform vec4 fresnelColor;
+
+    @{default:"pink",type:"color"}
+    uniform vec3 yParamUpper;
+
+    @{default:"blue",type:"color"}
+    uniform vec3 yParamBottom;
+
+    @{default:3}
+    uniform float yParamPower;
+
+    void main(){
+      float lam = min(0.99,max(0.01,dot(normalize(vLightDirection),vNormal)/2.0 + 0.5));
+      lam = texture2D(toon,vec2(1.0 - lam,0.5)).r;
+      vec4 resultColor = baseColor;
+      #ifdef BASE_TEXTURE_USED
+      resultColor = texture2D(baseTexture,vTexCoord);
+      #endif
+      if(lam <= step1 && lam > step2){
+        resultColor *= shadow1Color;
+      }
+      if(lam <= step2){
+        resultColor *= shadow2Color;
+      }
+      float highlight = max(0.01,dot(normalize((vLightDirection + vCameraDirection)/2.0),vNormal));
+      highlight = pow(highlight,highlightCoeff);
+      if(highlightStep < highlight){
+        resultColor = highlightColor;
+      }
+      float pFresnel = dot(vNormal,vec3(0,0,-1));
+      if(pFresnel<fresnel){
+        resultColor = mix(fresnelColor,resultColor,-pFresnel/fresnel);
+      }
+      if(vYParamCoeff > 0.){
+        resultColor.rgb = mix(resultColor.rgb,yParamUpper,pow(vYParamCoeff,yParamPower));
+      }else{
+        resultColor.rgb = mix(resultColor.rgb,yParamBottom,pow(-vYParamCoeff,yParamPower));
+      }
+      gl_FragColor = resultColor;
+    }
+  #endif
+}
+
+@Pass{
+  @CullFace(FRONT)
+  FS_PREC(mediump,float)
+  varying vec3 vNormal;
+  #ifdef VS
+  attribute vec3 position;
+  attribute vec3 normal;
+
+  uniform mat4 _matPVM;
+  uniform mat4 _matVM;
+  uniform mat4 _matM;
+
+  @{default:0.01}
+  uniform float edgeSize;
+
+  uniform vec3 _cameraPosition;
+  void main(){
+    vec3 posWorld = (_matM * vec4(position,1)).xyz;
+    float scaleSize = 1. + edgeSize * length(posWorld - _cameraPosition);
+    gl_Position = _matPVM * vec4(position * scaleSize,1);
+    vNormal = (_matVM * vec4(normal,0.)).xyz;
+  }
+  #endif
+
+  #ifdef FS
+  @{default:"cyan",type:"color"}
+  uniform vec4 edgeColor;
+  void main(){
+    gl_FragColor = edgeColor;
+  }
+  #endif
+}

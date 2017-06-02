@@ -7,22 +7,22 @@
     <script src="../static/grimoire-math.js"></script>
     <script src="../static/grimoire-fundamental.js"></script>
     <script src="../static/grimoire-forward-shading.js"></script>
-    <script src="./index.js" charset="utf-8"></script>
+    <!-- <script src="./index.js" charset="utf-8"></script> -->
     <link href="../static/default.css" rel="stylesheet">
     <!-- stats.js r16 -->
   </head>
   <body>
     <script type="text/goml" id="canvas">
     <goml width="fit" height="fit">
-    <import-material typeName="colorTest" src="./index.sort"/>
-    <geometry type="quad2" name="quad2" useHighQualityShading="true"/>
+    <import-material typeName="toon" src="./toon.sort"/>
         <scene>
             <camera far="2000">
               <camera.components>
                 <MouseCameraControl/>
               </camera.components>
             </camera>
-            <mesh geometry="quad2" color="white" scale="0.1"/>
+            <mesh rotation="x(-60d)" material="new(toon)" scale="10" position="0,-1,0" yParamPower="1000" baseColor="white"/>
+            <mesh geometry="sphere" material="new(toon)" yParamPower="10"/>
             <light type="point" color="yellow" position="0,0,0.1"/>
         </scene>
     </goml>

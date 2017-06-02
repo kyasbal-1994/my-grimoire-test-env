@@ -7,23 +7,24 @@
     <script src="../static/grimoire-math.js"></script>
     <script src="../static/grimoire-fundamental.js"></script>
     <script src="../static/grimoire-forward-shading.js"></script>
-    <script src="./index.js" charset="utf-8"></script>
+
     <link href="../static/default.css" rel="stylesheet">
     <!-- stats.js r16 -->
   </head>
   <body>
     <script type="text/goml" id="canvas">
     <goml width="fit" height="fit">
-    <import-material typeName="colorTest" src="./index.sort"/>
-    <geometry type="quad2" name="quad2" useHighQualityShading="true"/>
         <scene>
-            <camera far="2000">
+            <camera>
               <camera.components>
                 <MouseCameraControl/>
               </camera.components>
             </camera>
-            <mesh geometry="quad2" color="white" scale="0.1"/>
-            <light type="point" color="yellow" position="0,0,0.1"/>
+            <mesh rotation="y(60d)" geometry="cube" albedo="white" roughnessMap="./roughness.jpg" refractive="0.2"/>
+            <!--<light type="directional" rotation="x(40d)"/>-->
+            <light type="point" position="0,1.1,0" intensity="3"/>
+            <light type="point" position="0.3,1.1,0" intensity="3" color="red"/>
+            <light type="point" position="-0.3,1.1,0" intensity="3" color="blue"/>
         </scene>
     </goml>
     </script>

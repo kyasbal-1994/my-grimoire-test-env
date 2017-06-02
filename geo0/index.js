@@ -8,17 +8,23 @@ GeometryFactory.addType("quad2",{},(gl)=>{
       size:3
     }
   });
-  geometry.addAttributes([1,1,1,1,0,0,0,1,0,0,0,1],{
-    COLOR1:{
+  geometry.addAttributes([0,0,1,0,0,1,0,0,1,0,0,1],
+  {
+    NORMAL:{
       size:3
     }
   });
-  geometry.addAttributes([1,0,1,1,1,0,0,1,1,0,1,1],{
+  geometry.addAttributes([1,1,1,1,0,0,0,1,0,0,0,1],{
+    COLOR:{
+      size:3
+    }
+  });
+  geometry.addAttributes([1,1,1,1,0,0,0,1,0,0,0,1],{
     COLOR2:{
       size:3
     }
   });
-  const n = 1000000;
+  const n = 1000;
   const arr = [];
   const arr2 = [];
   for(let i = 0; i < n; i ++){

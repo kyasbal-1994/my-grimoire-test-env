@@ -63,6 +63,6 @@ $(function(){
 });
 
 gr(function() {
-    gr("#main")("scene").append('<model src="../tf2/' + modelName + '/' + modelType + '/' + modelName + '.gltf' + '"/>')
+    gr("#main")("scene").append('<model waitForLoad="true" src="../tf2-samples/' + modelName + '/' + modelType + '/' + modelName + '.gltf' + '"/>')
     gr("#main")("model").addComponent("Rotate");
 });
